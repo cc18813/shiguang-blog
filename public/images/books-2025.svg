@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="150" y="100" width="150" height="200" rx="10" fill="rgba(255,255,255,0.1)" transform="rotate(-10 225 200)"/>
+  <rect x="500" y="150" width="150" height="200" rx="10" fill="rgba(255,255,255,0.12)" transform="rotate(5 575 250)"/>
+  <rect x="850" y="80" width="150" height="200" rx="10" fill="rgba(255,255,255,0.1)" transform="rotate(-3 925 180)"/>
+  <text x="600" y="420" text-anchor="middle" fill="white" font-family="sans-serif" font-size="48" font-weight="bold">2025年，我读过的那些书</text>
+  <text x="600" y="490" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-family="sans-serif" font-size="26">一份私人阅读清单</text>
+</svg>
