@@ -23,7 +23,8 @@ export function AiSummary({ slug }: Props) {
         const data = await res.json();
         if (data.error) throw new Error(data.error);
         if (!cancelled) setSummary(data.summary);
-      } catch {
+      } catch (err) {
+        console.error("AI Summary fetch failed:", err);
         if (!cancelled) setError(true);
       } finally {
         if (!cancelled) setLoading(false);

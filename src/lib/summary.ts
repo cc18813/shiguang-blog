@@ -1,7 +1,10 @@
 import fs from "fs";
 import path from "path";
 
-const CACHE_FILE = path.join(process.cwd(), ".summary-cache.json");
+const CACHE_FILE = path.join(
+  process.env.VERCEL ? "/tmp" : process.cwd(),
+  ".summary-cache.json"
+);
 const DEEPSEEK_BASE = "https://api.deepseek.com/v1";
 const MODEL = "deepseek-chat";
 
