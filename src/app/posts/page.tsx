@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: "全部文章",
-  description: "浏览所有博客文章。",
+  description: "浏览所有文章。",
 };
 
 const POSTS_PER_PAGE = 10;
@@ -28,9 +28,11 @@ export default async function PostsPage({
 
   return (
     <Container>
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+      <h1 className="text-3xl font-black tracking-tight text-white mb-2">
+        <span className="text-neon-cyan neon-text-cyan">&gt; </span>
         全部文章
       </h1>
+      <div className="mt-2 h-1 w-16 bg-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.5)] mb-10" />
       <PostList posts={posts} />
       <Pagination
         currentPage={safePage}

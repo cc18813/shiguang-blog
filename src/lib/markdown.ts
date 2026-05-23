@@ -4,8 +4,10 @@ import { marked } from "marked";
 import type { PostFrontmatter } from "@/types";
 
 export function calculateReadingTime(text: string): number {
-  const wordCount = text.split(/\s+/).length;
-  return Math.max(1, Math.ceil(wordCount / 200));
+  const cjkChars = (text.match(/[一-鿿㐀-䶿]/g) || []).length;
+  const words = text.replace(/[一-鿿㐀-䶿]/g, "").split(/\s+/).filter(Boolean).length;
+  const minutes = cjkChars / 400 + words / 200;
+  return Math.max(1, Math.ceil(minutes));
 }
 
 export function parseMarkdownFile(filePath: string) {

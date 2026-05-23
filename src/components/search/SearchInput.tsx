@@ -74,33 +74,47 @@ export function SearchInput() {
   return (
     <div>
       <div className="relative mb-8">
-        <input
-          type="text"
-          value={query}
-          onChange={handleChange}
-          placeholder="搜索文章..."
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 transition-shadow text-lg"
-          autoFocus
-        />
-        {loading && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2">
-            <div className="w-5 h-5 border-2 border-gray-300 dark:border-gray-600 border-t-gray-900 dark:border-t-white rounded-full animate-spin" />
-          </div>
-        )}
+        <div className="relative">
+          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neon-green font-mono text-lg">
+            $
+          </span>
+          <input
+            type="text"
+            value={query}
+            onChange={handleChange}
+            placeholder="grep -r ..."
+            className="w-full pl-10 pr-5 py-4
+              border-2 border-void-400 bg-void-800
+              text-white placeholder-gray-600
+              font-mono text-lg
+              focus:outline-none focus:border-neon-cyan
+              focus:shadow-[0_0_20px_rgba(0,240,255,0.15)]
+              transition-all duration-300"
+            autoFocus
+          />
+          {loading && (
+            <div className="absolute right-5 top-1/2 -translate-y-1/2">
+              <div className="w-5 h-5 border-2 border-void-400
+                border-t-neon-cyan animate-spin" />
+            </div>
+          )}
+        </div>
       </div>
 
       {error && (
-        <EmptyState message="搜索功能暂不可用，请稍后重试。" />
+        <EmptyState message="搜索服务离线，请稍后重试。" />
       )}
 
       {!error && query.trim() && results.length > 0 && (
         <div>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-            找到 {results.length} 篇与 &quot;{query}&quot; 相关的文章
+          <p className="font-mono text-sm text-gray-500 mb-6 border-l-4 border-neon-cyan pl-4">
+            <span className="text-neon-green">$</span> grep:{" "}
+            <span className="text-neon-cyan neon-text-cyan">{results.length} results</span> for{" "}
+            &quot;{query}&quot;
           </p>
           <div className="space-y-6">
             {results.map((entry) => (
-              <div key={entry.slug} className="border-b border-gray-100 dark:border-gray-800 pb-6 last:border-b-0">
+              <div key={entry.slug}>
                 <PostCard
                   post={{
                     slug: entry.slug,
@@ -121,12 +135,12 @@ export function SearchInput() {
       )}
 
       {!error && query.trim() && results.length === 0 && !loading && (
-        <EmptyState message={`未找到与 "${query}" 相关的文章。`} />
+        <EmptyState message={`未找到与 "${query}" 相关的内容。`} />
       )}
 
       {!error && !query.trim() && !loading && (
-        <p className="text-center text-gray-400 dark:text-gray-500 mt-12">
-          输入关键词开始搜索...
+        <p className="text-center text-gray-600 font-mono text-sm mt-12">
+          <span className="text-neon-cyan animate-neon-pulse">▊</span> 输入关键词进行搜索...
         </p>
       )}
     </div>

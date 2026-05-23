@@ -8,7 +8,8 @@ const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 let _cache: Post[] | null = null;
 
 function readAllPosts(): Post[] {
-  if (_cache) return _cache;
+  // In development, always re-read from disk so new/edited .md files show up immediately
+  if (_cache && process.env.NODE_ENV === "production") return _cache;
 
   if (!fs.existsSync(POSTS_DIR)) {
     _cache = [];
